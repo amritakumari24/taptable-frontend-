@@ -127,47 +127,83 @@ export default function LandingPage() {
           </div>
           
           <div className={`hero-visual ${isVisible ? 'visual-visible' : ''}`}>
-            <div className="phone-mockup">
-              <div className="phone-screen">
-                <div className="menu-demo">
-                  <div className="demo-header">
-                    <div className="demo-logo">TapTable Menu</div>
-                    <div className="table-badge">Table 7</div>
-                  </div>
-                  <div className="demo-items">
-                    <div className="demo-item active">
-                      <div className="item-image"></div>
-                      <div className="item-info">
-                        <div className="item-name">Margherita Pizza</div>
-                        <div className="item-price">₹299</div>
-                      </div>
-                      <div className="add-btn">+</div>
+            <div className="phones-container">
+              {/* First Phone */}
+              <div className="phone-mockup phone-left">
+                <div className="phone-frame">
+                  <div className="phone-notch"></div>
+                  <div className="phone-screen">
+                    <div className="menu-header">
+                      <div className="menu-title">TapTable Menu</div>
+                      <div className="table-badge-phone">Table 7</div>
                     </div>
-                    <div className="demo-item">
-                      <div className="item-image"></div>
-                      <div className="item-info">
-                        <div className="item-name">Caesar Salad</div>
-                        <div className="item-price">₹199</div>
+                    <div className="menu-grid">
+                      <div className="menu-item-card">
+                        <div className="menu-item-image" style={{background: 'linear-gradient(135deg, #ff6b6b 0%, #ff8787 100%)'}}></div>
+                        <div className="menu-item-name">Spicy Wings</div>
                       </div>
-                      <div className="add-btn">+</div>
+                      <div className="menu-item-card">
+                        <div className="menu-item-image" style={{background: 'linear-gradient(135deg, #ffd93d 0%, #ffed4e 100%)'}}></div>
+                        <div className="menu-item-name">Pasta</div>
+                      </div>
+                      <div className="menu-item-card">
+                        <div className="menu-item-image" style={{background: 'linear-gradient(135deg, #6bcf7f 0%, #8ee99e 100%)'}}></div>
+                        <div className="menu-item-name">Salad</div>
+                      </div>
+                      <div className="menu-item-card">
+                        <div className="menu-item-image" style={{background: 'linear-gradient(135deg, #ff9a76 0%, #ffb088 100%)'}}></div>
+                        <div className="menu-item-name">Pizza</div>
+                      </div>
+                      <div className="menu-item-card">
+                        <div className="menu-item-image" style={{background: 'linear-gradient(135deg, #a29bfe 0%, #b8b2ff 100%)'}}></div>
+                        <div className="menu-item-name">Burger</div>
+                      </div>
+                      <div className="menu-item-card">
+                        <div className="menu-item-image" style={{background: 'linear-gradient(135deg, #fd79a8 0%, #ff9ff3 100%)'}}></div>
+                        <div className="menu-item-name">Dessert</div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            
-            <div className="floating-elements">
-              <div className="floating-card card-1">
-                <CheckCircle className="w-6 h-6 text-green-500" />
-                <span>Order Confirmed!</span>
-              </div>
-              <div className="floating-card card-2">
-                <Zap className="w-6 h-6 text-yellow-500" />
-                <span>60% Faster Service</span>
-              </div>
-              <div className="floating-card card-3">
-                <Users className="w-6 h-6 text-blue-500" />
-                <span>Happy Customers</span>
+
+              {/* Second Phone */}
+              <div className="phone-mockup phone-right">
+                <div className="phone-frame">
+                  <div className="phone-notch"></div>
+                  <div className="phone-screen">
+                    <div className="menu-header">
+                      <div className="menu-title">TapTable Menu</div>
+                      <div className="table-badge-phone">Table 5</div>
+                    </div>
+                    <div className="menu-grid">
+                      <div className="menu-item-card">
+                        <div className="menu-item-image" style={{background: 'linear-gradient(135deg, #74b9ff 0%, #a8daff 100%)'}}></div>
+                        <div className="menu-item-name">Seafood</div>
+                      </div>
+                      <div className="menu-item-card">
+                        <div className="menu-item-image" style={{background: 'linear-gradient(135deg, #55efc4 0%, #81f5d5 100%)'}}></div>
+                        <div className="menu-item-name">Sushi</div>
+                      </div>
+                      <div className="menu-item-card">
+                        <div className="menu-item-image" style={{background: 'linear-gradient(135deg, #fab1a0 0%, #ffc8b7 100%)'}}></div>
+                        <div className="menu-item-name">Steak</div>
+                      </div>
+                      <div className="menu-item-card">
+                        <div className="menu-item-image" style={{background: 'linear-gradient(135deg, #dfe6e9 0%, #f0f3f5 100%)'}}></div>
+                        <div className="menu-item-name">Rice Bowl</div>
+                      </div>
+                      <div className="menu-item-card">
+                        <div className="menu-item-image" style={{background: 'linear-gradient(135deg, #ffeaa7 0%, #fff5c2 100%)'}}></div>
+                        <div className="menu-item-name">Noodles</div>
+                      </div>
+                      <div className="menu-item-card">
+                        <div className="menu-item-image" style={{background: 'linear-gradient(135deg, #ff7675 0%, #ff9f9f 100%)'}}></div>
+                        <div className="menu-item-name">Drinks</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -404,7 +404,7 @@ animation-delay: 8s;
   background: rgba(170, 193, 229, 0.85); /* DARK, for contrast */
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
-  color: #fff; /* WHITE text for visibility */
+  color: #000000; /* BLACK text */
   font-size: 1rem;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
@@ -413,7 +413,7 @@ animation-delay: 8s;
 }
 
 .form-input::placeholder {
-  color: rgba(255, 255, 255, 0.65); /* Bright placeholder for readability */
+  color: rgba(0, 0, 0, 0.5); /* Dark placeholder */
 }
 /* Input Focus Styles */
 .form-input:focus {
@@ -439,7 +439,7 @@ animation-delay: 8s;
  transform: translateY(-50%);
  background: transparent;
  border: none;
- color: rgba(255, 255, 255, 0.5);
+ color: #000000;
  cursor: pointer;
  transition: all 0.3s ease;
  z-index: 2;
@@ -447,8 +447,8 @@ animation-delay: 8s;
  border-radius: 4px;
 }
 .password-toggle:hover {
- color: #667eea;
- background: rgba(102, 126, 234, 0.1);
+ color: #000000;
+ background: rgba(0, 0, 0, 0.1);
 }
 .input-border {
  position: absolute;
