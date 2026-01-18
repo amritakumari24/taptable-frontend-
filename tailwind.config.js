@@ -6,6 +6,9 @@ export default {
       colors: {
         primary: '#3277e8ff',
         secondary: '#6366F1'
+      },
+      backgroundColor: {
+        DEFAULT: '#723c16ff'
       }
     },
   },
