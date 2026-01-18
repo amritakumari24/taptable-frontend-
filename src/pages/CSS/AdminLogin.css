@@ -32,7 +32,12 @@
   height: 100%;
   z-index: -1;
 }
-.floating-orbs {   position: absolute;   width: 100%;  height: 100%;  overflow: hidden;
+
+.floating-orbs {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 .orb {
 position: absolute;
@@ -66,7 +71,7 @@ bottom: 20%;
 left: 30%;
 animation-delay: 10s;
 }
-orb-4 {
+.orb-4 {
  width: 180px;
  height: 180px;
  background: radial-gradient(circle, rgba(236, 72, 153, 0.4) 0%, transparent 70%);
@@ -161,9 +166,17 @@ animation-delay: 8s;
   inset 0 1px 0 rgba(255, 255, 255, 0.1);
  animation: card-float 6s ease-in-out infinite;
  position: relative;
- overflow: visible;
+ overflow-y: auto;
+ overflow-x: hidden;
  min-height: auto;
  max-height: 90vh;
+ scrollbar-width: none; /* Firefox */
+ -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.login-card::-webkit-scrollbar {
+ display: none;
 }
 /* Card Shimmer Animation */
 .login-card::before {
@@ -339,9 +352,17 @@ animation-delay: 8s;
    =========================== */
 .forms-container {
  position: relative;
- overflow: visible;
+ overflow-y: auto;
+ overflow-x: hidden;
  min-height: 450px;
  padding-bottom: 1rem;
+ scrollbar-width: none; /* Firefox */
+ -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.forms-container::-webkit-scrollbar {
+ display: none;
 }
 .form-wrapper {
  position: absolute;
@@ -396,15 +417,15 @@ animation-delay: 8s;
 }
 
 /* ===========================
-   REVISED -- FORM INPUT (VISIBLE WHITE TEXT, DARK BACKGROUND)
+   FORM INPUT (VISIBLE TEXT, DARK BACKGROUND)
    =========================== */
 .form-input {
   width: 100%;
   padding: 1rem 1rem 1rem 3rem;
-  background: rgba(170, 193, 229, 0.85); /* DARK, for contrast */
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 12px;
-  color: #fff; /* WHITE text for visibility */
+  color: black;
   font-size: 1rem;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
@@ -413,12 +434,13 @@ animation-delay: 8s;
 }
 
 .form-input::placeholder {
-  color: rgba(255, 255, 255, 0.65); /* Bright placeholder for readability */
+  color: rgba(255, 255, 255, 0.5);
 }
+
 /* Input Focus Styles */
 .form-input:focus {
   outline: none;
-  background: rgba(247, 244, 244, 0.10); /* Optional: slightly lighter, keep it very subtle */
+  background: rgba(15, 23, 42, 0.95);
   border-color: #667eea;
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
 }
@@ -439,7 +461,7 @@ animation-delay: 8s;
  transform: translateY(-50%);
  background: transparent;
  border: none;
- color: rgba(255, 255, 255, 0.5);
+ color: rgba(0, 0, 0, 0.7);
  cursor: pointer;
  transition: all 0.3s ease;
  z-index: 2;
@@ -447,7 +469,7 @@ animation-delay: 8s;
  border-radius: 4px;
 }
 .password-toggle:hover {
- color: #667eea;
+ color: rgba(0, 0, 0, 0.9);
  background: rgba(102, 126, 234, 0.1);
 }
 .input-border {
@@ -681,8 +703,21 @@ animation-delay: 8s;
   margin-bottom: 2rem;
   max-height: 90vh;
   overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
  }
- .forms-container { min-height: 350px; }
+ .login-card::-webkit-scrollbar {
+  display: none;
+ }
+ .forms-container { 
+  min-height: 350px; 
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+ }
+ .forms-container::-webkit-scrollbar {
+  display: none;
+ }
  .form-wrapper { min-height: 350px; }
  .brand-name  { font-size: 1.5rem; }
  .login-title  { font-size: 1.25rem; }
@@ -697,15 +732,38 @@ animation-delay: 8s;
 }
 @media (max-height: 600px) {
  .login-container { align-items: flex-start; padding-top: 1rem; }
- .login-card { margin: 1rem 0; max-height: calc(100vh - 2rem); }
- .forms-container { min-height: 300px; }
+ .login-card { 
+  margin: 1rem 0; 
+  max-height: calc(100vh - 2rem);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+ }
+ .login-card::-webkit-scrollbar {
+  display: none;
+ }
+ .forms-container { 
+  min-height: 300px; 
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+ }
+ .forms-container::-webkit-scrollbar {
+  display: none;
+ }
  .auth-form  { gap: 1rem; }
  .form-wrapper  { min-height: 300px; }
 }
 
 /* ===========================
-   EXTRA SAFEGUARDS FOR BUTTON VISIBILITY
+   EXTRA SAFEGUARDS FOR BUTTON VISIBILITY
    =========================== */
-.login-card { overflow-y: auto; max-height: 90vh; }
-.forms-container { padding-bottom: 1rem; }
+.forms-container { 
+ padding-bottom: 1rem; 
+ overflow-y: auto;
+ scrollbar-width: none;
+ -ms-overflow-style: none;
+}
+.forms-container::-webkit-scrollbar {
+ display: none;
+}
 .submit-btn { position: relative !important; clear: both; display: flex !important; margin-top: auto; }

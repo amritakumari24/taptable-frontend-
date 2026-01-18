@@ -180,7 +180,7 @@ export default function AdminLogin() {
                       type="email"
                       value={email}
                       onChange={e => setEmail(e.target.value)}
-                      className="form-input text-black"
+                      className="form-input"
                       placeholder="restaurant@taptable.com"
                       required
                     />
@@ -196,7 +196,7 @@ export default function AdminLogin() {
                       type={showPassword ? 'text' : 'password'}
                       value={password}
                       onChange={e => setPassword(e.target.value)}
-                      className="form-input text-black"
+                      className="form-input"
                       placeholder="Enter your password"
                       required
                     />
@@ -242,7 +242,7 @@ export default function AdminLogin() {
                       type="text"
                       value={name}
                       onChange={e => setName(e.target.value)}
-                      className="form-input text-black"
+                      className="form-input"
                       placeholder="Amazing Bistro"
                       required
                     />
@@ -258,7 +258,7 @@ export default function AdminLogin() {
                       type="email"
                       value={registerEmail}
                       onChange={e => setRegisterEmail(e.target.value)}
-                      className="form-input text-black"
+                      className="form-input"
                       placeholder="owner@restaurant.com"
                       required
                     />
@@ -274,7 +274,7 @@ export default function AdminLogin() {
                       type={showPassword ? 'text' : 'password'}
                       value={registerPassword}
                       onChange={e => setRegisterPassword(e.target.value)}
-                      className="form-input text-black"
+                      className="form-input"
                       placeholder="Create secure password"
                       minLength={6}
                       required
@@ -322,11 +322,11 @@ export default function AdminLogin() {
               <div className="demo-content">
                 <div className="demo-credential">
                   <span className="demo-label">Email:</span>
-                  <code className="demo-value">demo@taptable.com</code>
+                  <code className="demo-value">admin@taptable.com</code>
                 </div>
                 <div className="demo-credential">
                   <span className="demo-label">Password:</span>
-                  <code className="demo-value">demo123</code>
+                  <code className="demo-value">admin123</code>
                 </div>
               </div>
             </div>

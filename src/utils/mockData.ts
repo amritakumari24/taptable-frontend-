@@ -176,6 +176,45 @@ export const mockApiService = {
     throw new Error('Invalid credentials')
   },
 
+  register: async (name: string, email: string, _password: string) => {
+    await new Promise(resolve => setTimeout(resolve, 500))
+    const restaurants = JSON.parse(localStorage.getItem('restaurants') || '[]')
+    
+    // Check if email already exists
+    if (restaurants.some((r: Restaurant) => r.email === email)) {
+      throw new Error('Email already registered')
+    }
+    
+    // Create new restaurant
+    const newRestaurant: Restaurant = {
+      id: Date.now(),
+      name,
+      email,
+      phone: '',
+      address: '',
+      settings: {
+        taxRate: 10,
+        serviceCharge: 5,
+        currency: 'USD',
+        acceptsOnlinePayment: true,
+        acceptsCash: true
+      }
+    }
+    
+    restaurants.push(newRestaurant)
+    localStorage.setItem('restaurants', JSON.stringify(restaurants))
+    
+    const token = 'mock-jwt-token-' + Date.now()
+    return {
+      token,
+      restaurant: {
+        id: newRestaurant.id,
+        name: newRestaurant.name,
+        email: newRestaurant.email
+      }
+    }
+  },
+
   // Menu
   getMenu: async (restaurantId: number): Promise<MenuItem[]> => {
     await new Promise(resolve => setTimeout(resolve, 300))
