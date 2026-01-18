@@ -1,4 +1,5 @@
 // src/utils/api.ts
+import { mockApiService } from './mockData'
 
 export type PlainObject = Record<string, any>
 
@@ -16,12 +17,10 @@ export interface AuthResponse {
 const stripTrailingSlash = (s = '') => s.replace(/\/+$/, '')
 
 const rawApiBase =
-  import.meta.env?.VITE_API_URL || 
-  (typeof window !== 'undefined'
-    ? `${window.location.protocol}//${window.location.host}`
-    : '')
+  import.meta.env?.VITE_API_URL || ''
 
 export const API_BASE = stripTrailingSlash(rawApiBase)
+const USE_MOCK_DATA = !import.meta.env?.VITE_API_URL || import.meta.env?.VITE_USE_MOCK === 'true'
 
 /* ================= API SERVICE ================= */
 
@@ -83,7 +82,12 @@ class ApiService {
 
   /* ================= AUTH ================= */
 
-  login(email: string, password: string) {
+  async login(email: string, password: string) {
+    if (USE_MOCK_DATA) {
+      const res = await mockApiService.login(email, password)
+      if (res?.token) this.setToken(res.token)
+      return res
+    }
     return this.request<AuthResponse>('/api/auth/login', {
       method: 'POST',
       body: JSON.stringify({ email, password }),
@@ -93,7 +97,10 @@ class ApiService {
     })
   }
 
-  register(name: string, email: string, password: string) {
+  async register(name: string, email: string, password: string) {
+    if (USE_MOCK_DATA) {
+      throw new Error('Registration not available in demo mode')
+    }
     return this.request<AuthResponse>('/api/auth/register', {
       method: 'POST',
       body: JSON.stringify({ name, email, password }),
@@ -105,28 +112,32 @@ class ApiService {
 
   /* ================= RESTAURANT (PUBLIC) ================= */
 
-  getRestaurantInfo(restaurantId: number) {
+  async getRestaurantInfo(restaurantId: number) {
+    if (USE_MOCK_DATA) return mockApiService.getRestaurantInfo(restaurantId)
     return this.request(`/api/restaurants/${restaurantId}`)
   }
 
   /* ================= TABLES ================= */
 
-  getTablesForRestaurant(restaurantId: number) {
+  async getTablesForRestaurant(restaurantId: number) {
+    if (USE_MOCK_DATA) return mockApiService.getTablesForRestaurant(restaurantId)
     return this.request(`/api/restaurants/${restaurantId}/tables`)
   }
 
-  addTable(payload: {
+  async addTable(payload: {
     number: string
     seats: number
     restaurant_id: number
   }) {
+    if (USE_MOCK_DATA) return mockApiService.addTable(payload)
     return this.request('/api/tables', {
       method: 'POST',
       body: JSON.stringify(payload),
     })
   }
 
-  deleteTable(tableId: number) {
+  async deleteTable(tableId: number) {
+    if (USE_MOCK_DATA) return mockApiService.deleteTable(tableId)
     return this.request(`/api/tables/${tableId}`, {
       method: 'DELETE',
     })
@@ -135,30 +146,35 @@ class ApiService {
   /* ================= MENU ================= */
   // BACKEND: /api/menu/<restaurant_id>
 
-  getMenu(restaurantId: number) {
+  async getMenu(restaurantId: number) {
+    if (USE_MOCK_DATA) return mockApiService.getMenu(restaurantId)
     return this.request(`/api/menu/${restaurantId}`)
   }
 
-  addMenuItem(payload: PlainObject) {
+  async addMenuItem(payload: PlainObject) {
+    if (USE_MOCK_DATA) return mockApiService.addMenuItem(payload as any)
     return this.request('/api/menu/', {
       method: 'POST',
       body: JSON.stringify(payload),
     })
   }
 
-  updateMenuItem(menuItemId: number, payload: PlainObject) {
+  async updateMenuItem(menuItemId: number, payload: PlainObject) {
+    if (USE_MOCK_DATA) return mockApiService.updateMenuItem(menuItemId, payload)
     return this.request(`/api/menu/${menuItemId}`, {
       method: 'PUT',
       body: JSON.stringify(payload),
     })
   }
 
-  deleteMenuItem(menuItemId: number) {
+  async deleteMenuItem(menuItemId: number) {
+    if (USE_MOCK_DATA) return mockApiService.deleteMenuItem(menuItemId)
     return this.request(`/api/menu/${menuItemId}`, {
       method: 'DELETE',
     })
   }
-  reclassifyMenu(restaurantId: number) {
+  async reclassifyMenu(restaurantId: number) {
+    if (USE_MOCK_DATA) return mockApiService.reclassifyMenu(restaurantId)
     return this.request(`/api/menu/${restaurantId}/reclassify`, {
       method: 'POST',
     })
@@ -166,46 +182,48 @@ class ApiService {
 
   /* ================= ORDERS (ADMIN) ================= */
 
-  getOrders(restaurantId: number) {
-  return this.request(`/api/orders?restaurant_id=${restaurantId}/orders`)
-}
+  async getOrders(restaurantId: number) {
+    if (USE_MOCK_DATA) return mockApiService.getOrders(restaurantId)
+    return this.request(`/api/orders?restaurant_id=${restaurantId}/orders`)
+  }
 
-
-  updateOrderStatus(orderId: number, status: string) {
-  return this.request(`/api/orders/${orderId}/status`, {
-    method: 'PUT',
-    body: JSON.stringify({ status }),
-  })
-}
+  async updateOrderStatus(orderId: number, status: string) {
+    if (USE_MOCK_DATA) return mockApiService.updateOrderStatus(orderId, status)
+    return this.request(`/api/orders/${orderId}/status`, {
+      method: 'PUT',
+      body: JSON.stringify({ status }),
+    })
+  }
 
 
   /* ================= CUSTOMER ORDERS ================= */
   // BACKEND: customer_order_bp → /api/customer/orders
 
-  createOrder(payload: {
-  restaurant_id: number
-  table_number: number
-  customerName: string
-  customerPhone: string
-  amount: number
-  payment_method: 'upi' | 'razorpay'
-  items: {
-    id: number
-    name: string
-    price: number
-    quantity: number
-  }[]
-}) {
-  return this.request('/api/customer-order/create-order', {
-    method: 'POST',
-    body: JSON.stringify(payload),
-  })
-}
+  async createOrder(payload: {
+    restaurant_id: number
+    table_number: number
+    customerName: string
+    customerPhone: string
+    amount: number
+    payment_method: 'upi' | 'razorpay'
+    items: {
+      id: number
+      name: string
+      price: number
+      quantity: number
+    }[]
+  }) {
+    if (USE_MOCK_DATA) return mockApiService.createOrder(payload)
+    return this.request('/api/customer-order/create-order', {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    })
+  }
 
 
   /* ================= ANALYTICS ================= */
 
-  getAnalytics(
+  async getAnalytics(
     restaurantId: number,
     params?: {
       timeRange?: '7days' | '30days' | 'custom'
@@ -213,6 +231,8 @@ class ApiService {
       endDate?: string
     }
   ) {
+    if (USE_MOCK_DATA) return mockApiService.getAnalytics(restaurantId)
+    
     const query = new URLSearchParams()
 
     if (params?.timeRange) query.append('timeRange', params.timeRange)
@@ -228,11 +248,13 @@ class ApiService {
 
   /* ================= SETTINGS ================= */
 
-  getRestaurantSettings(restaurantId: number) {
+  async getRestaurantSettings(restaurantId: number) {
+    if (USE_MOCK_DATA) return mockApiService.getRestaurantSettings(restaurantId)
     return this.request(`/api/settings/${restaurantId}`)
   }
 
-  updateRestaurantSettings(restaurantId: number, payload: PlainObject) {
+  async updateRestaurantSettings(restaurantId: number, payload: PlainObject) {
+    if (USE_MOCK_DATA) return mockApiService.updateRestaurantSettings(restaurantId, payload)
     return this.request(`/api/settings/${restaurantId}`, {
       method: 'PUT',
       body: JSON.stringify(payload),
