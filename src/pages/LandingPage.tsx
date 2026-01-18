@@ -212,42 +212,113 @@ export default function LandingPage() {
       <section id="how-it-works" className="how-it-works-section">
         <div className="section-container">
           <div className="section-header">
-            <h2 className="section-title">How TapTable Works</h2>
+            <h2 className="section-title">How it works</h2>
             <p className="section-description">
-              Get started in minutes, not hours
+              Get started in 4 simple steps
             </p>
           </div>
           
-          <div className="steps-container">
-            <div className="steps-visual">
-              <div className="step-line"></div>
-              
-              {[1, 2, 3, 4].map((step) => (
-                <div key={step} className="step-node">
-                  <div className="step-number">{step}</div>
-                  <div className="step-pulse"></div>
-                </div>
-              ))}
+          <div className="steps-wrapper">
+            <div className="step-card">
+              <div className="step-number-badge">1</div>
+              <h4 className="step-title">Create your account</h4>
+              <p className="step-description">Get started in seconds and access your restaurant dashboard</p>
             </div>
             
-            <div className="steps-content">
-              <div className="step-item">
-                <h4 className="step-title">Create Your Account</h4>
-                <p className="step-description">Sign up in 30 seconds and access your dashboard</p>
-              </div>
-              <div className="step-item">
-                <h4 className="step-title">Setup Your Menu</h4>
-                <p className="step-description">Add items, prices, and photos with our intuitive interface</p>
-              </div>
-              <div className="step-item">
-                <h4 className="step-title">Generate QR Codes</h4>
-                <p className="step-description">Create unique QR codes for each table instantly</p>
-              </div>
-              <div className="step-item">
-                <h4 className="step-title">Start Serving</h4>
-                <p className="step-description">Customers scan, order, and pay seamlessly</p>
-              </div>
+            <div className="step-card">
+              <div className="step-number-badge">2</div>
+              <h4 className="step-title">Set up your menu</h4>
+              <p className="step-description">Add items, prices, and photos in a few clicks</p>
             </div>
+            
+            <div className="step-card">
+              <div className="step-number-badge">3</div>
+              <h4 className="step-title">Generate QR codes</h4>
+              <p className="step-description">Create unique QR codes for each table instantly</p>
+            </div>
+            
+            <div className="step-card">
+              <div className="step-number-badge">4</div>
+              <h4 className="step-title">Start serving</h4>
+              <p className="step-description">Customers scan, order, and pay seamlessly</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section id="pricing" className="pricing-section">
+        <div className="pricing-container">
+          <div className="section-header">
+            <h2 className="section-title">Pricing</h2>
+            <p className="section-subtitle">No commission. No per-order fee. Flat pricing.</p>
+          </div>
+
+          <div className="pricing-cards">
+            {/* Starter Plan */}
+            <div className="pricing-card">
+              <div className="plan-header">
+                <h3 className="plan-name">Starter</h3>
+                <div className="plan-price">
+                  <span className="price">$29</span>
+                  <span className="period">/month</span>
+                </div>
+              </div>
+              <ul className="plan-features">
+                <li><CheckCircle className="w-5 h-5" /> Up to 5 tables</li>
+                <li><CheckCircle className="w-5 h-5" /> Basic menu management</li>
+                <li><CheckCircle className="w-5 h-5" /> QR code ordering</li>
+                <li><CheckCircle className="w-5 h-5" /> Email support</li>
+                <li><CheckCircle className="w-5 h-5" /> Basic analytics</li>
+              </ul>
+              <button className="plan-button secondary">Get Started</button>
+            </div>
+
+            {/* Professional Plan */}
+            <div className="pricing-card featured">
+              <div className="popular-badge">Most Popular</div>
+              <div className="plan-header">
+                <h3 className="plan-name">Professional</h3>
+                <div className="plan-price">
+                  <span className="price">$79</span>
+                  <span className="period">/month</span>
+                </div>
+              </div>
+              <ul className="plan-features">
+                <li><CheckCircle className="w-5 h-5" /> Up to 20 tables</li>
+                <li><CheckCircle className="w-5 h-5" /> Advanced menu management</li>
+                <li><CheckCircle className="w-5 h-5" /> QR code ordering</li>
+                <li><CheckCircle className="w-5 h-5" /> Priority support</li>
+                <li><CheckCircle className="w-5 h-5" /> Advanced analytics</li>
+                <li><CheckCircle className="w-5 h-5" /> Custom branding</li>
+                <li><CheckCircle className="w-5 h-5" /> Multiple locations</li>
+              </ul>
+              <button className="plan-button primary">Start Free Trial</button>
+            </div>
+
+            {/* Enterprise Plan */}
+            <div className="pricing-card">
+              <div className="plan-header">
+                <h3 className="plan-name">Enterprise</h3>
+                <div className="plan-price">
+                  <span className="price">Custom</span>
+                </div>
+              </div>
+              <ul className="plan-features">
+                <li><CheckCircle className="w-5 h-5" /> Unlimited tables</li>
+                <li><CheckCircle className="w-5 h-5" /> Full menu customization</li>
+                <li><CheckCircle className="w-5 h-5" /> White-label solution</li>
+                <li><CheckCircle className="w-5 h-5" /> 24/7 dedicated support</li>
+                <li><CheckCircle className="w-5 h-5" /> Custom integrations</li>
+                <li><CheckCircle className="w-5 h-5" /> Advanced reporting</li>
+                <li><CheckCircle className="w-5 h-5" /> On-premise option</li>
+              </ul>
+              <button className="plan-button secondary">Contact Sales</button>
+            </div>
+          </div>
+
+          <div className="pricing-footer">
+            <p>All plans include 14-day free trial. Cancel anytime.</p>
           </div>
         </div>
       </section>
