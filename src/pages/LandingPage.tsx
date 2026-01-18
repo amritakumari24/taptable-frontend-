@@ -23,19 +23,19 @@ export default function LandingPage() {
       icon: <Smartphone className="w-12 h-12" />,
       title: "QR Code Ordering",
       description: "Instant menu access with QR scanning",
-      color: "from-blue-500 to-purple-600"
+      color: "from-amber-700 to-brown-600"
     },
     {
       icon: <Zap className="w-12 h-12" />,
-      title: "Lightning Fast",
-      description: "Orders processed in real-time",
-      color: "from-purple-500 to-pink-600"
+      title: "Faster Table TurnOver",
+      description: "Orders directly reach kitchen under 5 seconds",
+      color: "from-amber-800 to-brown-700"
     },
     {
       icon: <Users className="w-12 h-12" />,
       title: "Boost Efficiency",
-      description: "Reduce staff workload by 60%",
-      color: "from-pink-500 to-orange-600"
+      description: "Reduce staff workload by 60%, with reduced mistakes and delays",
+      color: "from-orange-700 to-amber-800"
     }
   ]
 
@@ -127,49 +127,83 @@ export default function LandingPage() {
           </div>
           
           <div className={`hero-visual ${isVisible ? 'visual-visible' : ''}`}>
-            <div className="phone-mockup">
+            {/* First Phone */}
+            <div className="phone-mockup phone-1">
               <div className="phone-screen">
                 <div className="menu-demo">
                   <div className="demo-header">
                     <div className="demo-logo">TapTable Menu</div>
                     <div className="table-badge">Table 7</div>
                   </div>
-                  <div className="demo-items">
-                    <div className="demo-item active">
-                      <div className="item-image"></div>
-                      <div className="item-info">
-                        <div className="item-name">Margherita Pizza</div>
-                        <div className="item-price">₹299</div>
-                      </div>
-                      <div className="add-btn">+</div>
+                  <div className="food-grid">
+                    <div className="food-grid-item">
+                      <img 
+                        src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&h=400&fit=crop" 
+                        alt="Pizza"
+                      />
                     </div>
-                    <div className="demo-item">
-                      <div className="item-image"></div>
-                      <div className="item-info">
-                        <div className="item-name">Caesar Salad</div>
-                        <div className="item-price">₹199</div>
-                      </div>
-                      <div className="add-btn">+</div>
+                    <div className="food-grid-item">
+                      <img 
+                        src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=400&fit=crop" 
+                        alt="Burger"
+                      />
+                    </div>
+                    <div className="food-grid-item">
+                      <img 
+                        src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=400&h=400&fit=crop" 
+                        alt="Chicken Wings"
+                      />
+                    </div>
+                    <div className="food-grid-item">
+                      <img 
+                        src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400&h=400&fit=crop" 
+                        alt="Noodles"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Second Phone */}
+            <div className="phone-mockup phone-2">
+              <div className="phone-screen">
+                <div className="menu-demo">
+                  <div className="demo-header">
+                    <div className="demo-logo">TapTable Menu</div>
+                    <div className="table-badge">Table 12</div>
+                  </div>
+                  <div className="food-grid">
+                    <div className="food-grid-item">
+                      <img 
+                        src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=400&fit=crop" 
+                        alt="Pepperoni Pizza"
+                      />
+                    </div>
+                    <div className="food-grid-item">
+                      <img 
+                        src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&h=400&fit=crop" 
+                        alt="Pasta"
+                      />
+                    </div>
+                    <div className="food-grid-item">
+                      <img 
+                        src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=400&fit=crop" 
+                        alt="Salad"
+                      />
+                    </div>
+                    <div className="food-grid-item">
+                      <img 
+                        src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=400&h=400&fit=crop" 
+                        alt="Sushi"
+                      />
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             
-            <div className="floating-elements">
-              <div className="floating-card card-1">
-                <CheckCircle className="w-6 h-6 text-green-500" />
-                <span>Order Confirmed!</span>
-              </div>
-              <div className="floating-card card-2">
-                <Zap className="w-6 h-6 text-yellow-500" />
-                <span>60% Faster Service</span>
-              </div>
-              <div className="floating-card card-3">
-                <Users className="w-6 h-6 text-blue-500" />
-                <span>Happy Customers</span>
-              </div>
-            </div>
+            
           </div>
         </div>
         
@@ -183,7 +217,7 @@ export default function LandingPage() {
       <section id="features" className="features-section">
         <div className="section-container">
           <div className="section-header">
-            <h2 className="section-title">Powerful Features</h2>
+            <h2 className="section-title">Our Features</h2>
             <p className="section-description">
               Everything you need to revolutionize your restaurant operations
             </p>
@@ -196,11 +230,53 @@ export default function LandingPage() {
                 className={`feature-card ${activeFeature === index ? 'active' : ''}`}
                 onMouseEnter={() => setActiveFeature(index)}
               >
-                <div className={`feature-icon bg-gradient-to-br ${feature.color}`}>
-                  {feature.icon}
-                </div>
                 <h3 className="feature-title">{feature.title}</h3>
                 <p className="feature-description">{feature.description}</p>
+                {index === 0 && (
+                  <div className="feature-image">
+                    <img 
+                      src="https://img.freepik.com/free-vector/mobile-ordering-concept-illustration_114360-6652.jpg" 
+                      alt="QR Code Ordering System"
+                      style={{ 
+                        width: '150px', 
+                        height: '150px', 
+                        objectFit: 'contain',
+                        margin: '0.5rem auto 0',
+                        display: 'block'
+                      }}
+                    />
+                  </div>
+                )}
+                {index === 1 && (
+                  <div className="feature-image">
+                    <img 
+                      src="https://img.freepik.com/free-vector/restaurant-staff-concept-illustration_114360-9080.jpg" 
+                      alt="Faster Table Turnover"
+                      style={{ 
+                        width: '150px', 
+                        height: '150px', 
+                        objectFit: 'contain',
+                        margin: '0.5rem auto 0',
+                        display: 'block'
+                      }}
+                    />
+                  </div>
+                )}
+                {index === 2 && (
+                  <div className="feature-image">
+                    <img 
+                      src="https://img.freepik.com/free-vector/chef-concept-illustration_114360-1157.jpg" 
+                      alt="Boost Efficiency"
+                      style={{ 
+                        width: '150px', 
+                        height: '150px', 
+                        objectFit: 'contain',
+                        margin: '0.5rem auto 0',
+                        display: 'block'
+                      }}
+                    />
+                  </div>
+                )}
                 <div className="feature-glow"></div>
               </div>
             ))}
